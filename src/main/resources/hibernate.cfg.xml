@@ -23,5 +23,7 @@
         <mapping class="com.example.model.Order"/>
         <mapping class="com.example.model.Product"/>
         <mapping class="com.example.model.OrderDetails"/>
+        <mapping class="com.example.security.model.User"/>
+        <mapping class="com.example.security.model.Authority"/>
     </session-factory>
 </hibernate-configuration>

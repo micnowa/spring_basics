@@ -1,6 +1,6 @@
 package com.example.security.user;
 
-import com.example.model.User;
+import com.example.security.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,17 +11,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class JpaUserDetails implements UserDetails {
-    private String username;
-    private String password;
-    private String roles;
-    private boolean active;
-    private List<GrantedAuthority> authorities;
+    private final String username;
+    private final String password;
+    private final List<GrantedAuthority> authorities;
 
     public JpaUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
-        this.active = user.isActive();
-        this.authorities = Arrays.stream(user.getRoles().split(","))
+        this.authorities = Arrays.stream(user.getAuthority().getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
@@ -59,6 +56,6 @@ public class JpaUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return active;
+        return true;
     }
 }
