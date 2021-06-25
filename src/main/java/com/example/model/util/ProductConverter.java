@@ -12,7 +12,7 @@ public class ProductConverter {
     }
 
     public static Product convertToProduct(ProductDto productDto) {
-        Product product = new Product();
+        var product = new Product();
         product.setName(productDto.getName());
         product.setPrice(new BigDecimal(productDto.getPrice()));
         return product;

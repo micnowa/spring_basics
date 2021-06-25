@@ -17,8 +17,8 @@ public class Order {
     private int orderId;
 
     @ManyToOne
-    @JoinTable(name = "user_table")
-    private User user;
+    @JoinTable(name = "person")
+    private Person person;
 
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "order_details_id")

@@ -35,6 +35,15 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
         return new ResponseEntity(error, HttpStatus.NOT_FOUND);
     }
 
+//    @ExceptionHandler(UsernameNotFoundException.class)
+//    public final ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException ex,
+//                                                                       WebRequest request) {
+//        List<String> details = new ArrayList<>();
+//        details.add(ex.getLocalizedMessage());
+//        var error = new ErrorResponse("Product Not Found", details);
+//        return new ResponseEntity(error, HttpStatus.NOT_FOUND);
+//    }
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,

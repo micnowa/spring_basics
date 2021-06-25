@@ -19,7 +19,7 @@
 <!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
 <!--        <property name="spring.jpa.hibernate.ddl-auto">update</property>-->
 
-        <mapping class="com.example.model.User"/>
+        <mapping class="com.example.model.Person"/>
         <mapping class="com.example.model.Order"/>
         <mapping class="com.example.model.Product"/>
         <mapping class="com.example.model.OrderDetails"/>

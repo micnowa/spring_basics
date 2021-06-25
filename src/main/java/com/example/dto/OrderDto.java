@@ -12,8 +12,8 @@ public class OrderDto {
 //    private final List<String> productNames = new ArrayList<>();
 
     public OrderDto(Order order) {
-        this.userName = order.getUser().getName();
-        this.userSurname = order.getUser().getSurname();
+        this.userName = order.getPerson().getName();
+        this.userSurname = order.getPerson().getSurname();
 //        order.getProducts().forEach(product -> productNames.add(product.getName()));
     }
 }

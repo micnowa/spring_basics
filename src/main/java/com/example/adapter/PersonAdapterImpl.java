@@ -2,7 +2,7 @@ package com.example.adapter;
 
 import com.example.dto.PersonDto;
 import com.example.hibernate.PersonHibernateManager;
-import com.example.model.User;
+import com.example.model.Person;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,29 +10,29 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class UserAdapterImpl implements UserAdapter {
+public class PersonAdapterImpl implements PersonAdapter {
     @Override
     @Transactional
-    public List<PersonDto> getAllUsers() {
-        List<User> users = PersonHibernateManager.getAllUsers();
+    public List<PersonDto> getAllPersons() {
+        List<Person> people = PersonHibernateManager.getAllUsers();
 
-        return users.stream()
+        return people.stream()
                 .map(PersonDto::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public User getUserById(int id) {
+    public Person getPersonById(int id) {
         return PersonHibernateManager.getUserById(id);
     }
 
     @Override
-    public boolean addUser(PersonDto personDto) {
-        return PersonHibernateManager.UPDATE_ERROR == PersonHibernateManager.addUser(new User(personDto));
+    public boolean addPerson(PersonDto personDto) {
+        return PersonHibernateManager.UPDATE_ERROR == PersonHibernateManager.addUser(new Person(personDto));
     }
 
     @Override
-    public boolean deleteUserById(int id) {
+    public boolean deletePersonById(int id) {
         return PersonHibernateManager.deleteUserById(id);
     }
 }

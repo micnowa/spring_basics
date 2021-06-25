@@ -1,6 +1,6 @@
 package com.example.hibernate;
 
-import com.example.model.User;
+import com.example.model.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -18,12 +18,12 @@ public class PersonHibernateManager {
         throw new IllegalCallerException();
     }
 
-    public static List<User> getAllUsers() {
+    public static List<Person> getAllUsers() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            var users = session.createQuery("FROM User").list();
+            var users = session.createQuery("FROM Person").list();
             transaction.commit();
             return users;
         } catch (HibernateException e) {
@@ -33,12 +33,12 @@ public class PersonHibernateManager {
         return new LinkedList<>();
     }
 
-    public static User getUserById(int id) {
+    public static Person getUserById(int id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            var person = session.get(User.class, id);
+            var person = session.get(Person.class, id);
             transaction.commit();
             return person;
         } catch (HibernateException e) {
@@ -48,13 +48,13 @@ public class PersonHibernateManager {
         return null;
     }
 
-    public static int addUser(User user) {
+    public static int addUser(Person person) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = null;
         Integer userId = UPDATE_ERROR;
         try {
             transaction = session.beginTransaction();
-            userId = (Integer) session.save(user);
+            userId = (Integer) session.save(person);
             transaction.commit();
         } catch (HibernateException e) {
             rollbackTransaction(transaction);
@@ -68,7 +68,7 @@ public class PersonHibernateManager {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            var person = session.get(User.class, id);
+            var person = session.get(Person.class, id);
             session.delete(person);
             transaction.commit();
         } catch (HibernateException e) {

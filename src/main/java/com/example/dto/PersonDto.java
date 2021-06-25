@@ -1,6 +1,6 @@
 package com.example.dto;
 
-import com.example.model.User;
+import com.example.model.Person;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -19,11 +19,11 @@ public class PersonDto {
     private String email;
     private int age;
 
-    public PersonDto(User user) {
-        this.name = user.getName();
-        this.surname = user.getSurname();
-        this.phone = user.getPhone();
-        this.email = user.getEmail();
-        this.age = user.getAge();
+    public PersonDto(Person person) {
+        this.name = person.getName();
+        this.surname = person.getSurname();
+        this.phone = person.getPhone();
+        this.email = person.getEmail();
+        this.age = person.getAge();
     }
 }
